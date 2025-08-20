@@ -16,8 +16,11 @@ app.post("/login",userController.login);
 
 //category routes
 
-app.post("/create-category",categoryController.createCategory)
-
+app.post('/create-category',categoryController.createCategory);
+app.get('/getAllCategory', categoryController.gerAllCategory);
+app.get('/find-Category/:name',categoryController.findCategory);
+app.put('/update-category/:id',categoryController.updateCategory);
+app.delete('/delete-category/:id', categoryController.deleteCategory);
 
 
 module.exports = { app }
