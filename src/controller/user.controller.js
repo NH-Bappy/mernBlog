@@ -51,7 +51,8 @@ exports.registration = async (req, res) => {
     }
 }
 
-//login
+//login controller
+
 exports.login = async (req,res) => {
     try {
         // console.log(req.body)
