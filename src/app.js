@@ -3,6 +3,7 @@ const app = express();
 require('dotenv').config();
 const userController = require('./controller/user.controller');
 const categoryController = require('./controller/categoryController');
+const blogController = require('./controller/blog.controller');
 const upload = require('../src/middleware/multer.middleware');
 
 
@@ -26,7 +27,7 @@ app.delete('/delete-category/:id', categoryController.deleteCategory);
 
 
 //blog api route
-app.post("/create-blog" ,upload.single("image"));
+app.post("/create-blog" ,upload.single("image") , blogController.createBlog);
 
 
 module.exports = { app }

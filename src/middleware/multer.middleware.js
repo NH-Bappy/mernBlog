@@ -10,7 +10,7 @@ const storage = multer.diskStorage({
     // cb(null, file.fieldname + '-' + uniqueSuffix)
     console.log(file)
     return
-    cb(null, file.fieldname)
+    cb(null, file.originalname)
   }
 })
 
