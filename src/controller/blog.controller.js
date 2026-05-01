@@ -4,7 +4,7 @@ const blogModel = require('../models/blog.model');
 exports.createBlog = async(req ,res) => {
     try {
         
-        console.log(req)
+        console.log(req.file)
 
 
     } catch (error) {
