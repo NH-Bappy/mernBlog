@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 require('dotenv').config();
+const path = require('path');
 const userController = require('./controller/user.controller');
 const categoryController = require('./controller/categoryController');
 const blogController = require('./controller/blog.controller');
@@ -28,6 +29,6 @@ app.delete('/delete-category/:id', categoryController.deleteCategory);
 
 //blog api route
 app.post("/create-blog" ,upload.single("image") , blogController.createBlog);
-
+app.use('/static', express.static(path.join(__dirname, 'public')))
 
 module.exports = { app }
