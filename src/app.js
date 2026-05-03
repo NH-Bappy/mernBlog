@@ -31,5 +31,6 @@ app.delete('/delete-category/:id', categoryController.deleteCategory);
 app.post("/create-blog" ,upload.single("image") , blogController.createBlog);
 app.use('/static', express.static(path.join(__dirname, '../public/temp')));
 app.get("/allBlog" , blogController.allBlog);
+app.get("/singleBlog/:id" , blogController.singleBlog);
 
 module.exports = { app }

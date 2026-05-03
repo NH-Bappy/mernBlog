@@ -29,10 +29,6 @@ exports.createBlog = async (req, res) => {
 }
 
 
-exports.singleBlog = async (req, res) => {
-
-}
-
 exports.allBlog = async (req, res) => {
     try {
         const allBlog = await blogModel.find();
@@ -49,6 +45,28 @@ exports.allBlog = async (req, res) => {
         console.log("error from allBlog controller", error);
         res.status(500).json({
             msg: "error from allBlog controller",
+            error,
+        })
+    }
+}
+
+exports.singleBlog = async (req, res) => {
+    try {
+        const {id} = req.params;
+        const singleBlog = await blogModel.findById(id)
+        if(!singleBlog){
+            res.status(401).json({
+                msg: "there is no blog found",
+            })
+        }
+        res.status(201).json({
+            msg: "successfully found the blog",
+            singleBlog,
+        })
+    } catch (error) {
+        console.log("error from single Blog" ,error)
+        res.status(500).json({
+            msg: "error from single Blog",
             error,
         })
     }
