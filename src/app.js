@@ -29,6 +29,7 @@ app.delete('/delete-category/:id', categoryController.deleteCategory);
 
 //blog api route
 app.post("/create-blog" ,upload.single("image") , blogController.createBlog);
-app.use('/static', express.static(path.join(__dirname, '../public/temp')))
+app.use('/static', express.static(path.join(__dirname, '../public/temp')));
+app.get("/allBlog" , blogController.allBlog);
 
 module.exports = { app }
