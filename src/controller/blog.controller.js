@@ -71,3 +71,8 @@ exports.singleBlog = async (req, res) => {
         })
     }
 }
+
+
+exports.updateBlog = async(req ,res) => {
+    
+}
