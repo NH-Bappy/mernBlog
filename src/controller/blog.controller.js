@@ -27,3 +27,9 @@ exports.createBlog = async(req ,res) => {
         });
     }
 }
+
+
+exports.singleBlog = async(req , res) => {
+    
+}
+
