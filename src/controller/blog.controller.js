@@ -123,3 +123,7 @@ exports.updateBlog = async (req, res) => {
         });
     }
 }
+
+exports.deleteBlog = async (req , res) => {
+    
+}
