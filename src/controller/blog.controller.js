@@ -124,6 +124,41 @@ exports.updateBlog = async (req, res) => {
     }
 }
 
-exports.deleteBlog = async (req , res) => {
-    
-}
+exports.deleteBlog = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const deleteBlog = await blogModel.findByIdAndDelete(id);
+
+        if (!deleteBlog) {
+            return res.status(404).json({ msg: "The blog you are looking for not found" });
+        }
+
+        // delete image
+        if (deleteBlog.image) {
+            try {
+                const oldImageName = deleteBlog.image.split("/static")[1];
+
+                if (oldImageName) {
+                    const oldImagePath = path.join(__dirname, "../../public/temp", oldImageName);
+
+                    fs.unlink(oldImagePath, (err) => {
+                        if (err) {
+                            console.log("Error deleting image:", err);
+                        }
+                    });
+                }
+            } catch (error) {
+                console.log("Error deleting image path:", error);
+            }
+        }
+
+        res.status(200).json({ 
+            msg: "Successfully deleted your blog",
+            deleteBlog,
+        });
+
+    } catch (error) {
+        res.status(500).json({ msg: "Server error", error: error.message });
+    }
+};
